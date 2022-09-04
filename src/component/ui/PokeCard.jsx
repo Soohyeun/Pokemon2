@@ -14,12 +14,10 @@ const StyledCard = styled.div`
 
 const StyledFront = styled.div`
   width: 100%;
-  height: 100%;
 `;
 
 const StyledBack = styled.div`
   width: 100%;
-  height: 100%;
 `;
 
 const typeColour = {
@@ -44,12 +42,13 @@ const typeColour = {
 };
 
 function PokeCard(props) {
-  const { name, image, type } = props;
+  const { id, name, image, types, hp, weight, height } = props;
   const [flip, setFlip] = useState(false);
+  console.log(typeof(types))
 
   return (
     <StyledCard
-      style={{ backgroundColor: typeColour[type] }}
+      style={{ backgroundColor: typeColour[types[0]] }}
       onClick={() => {setFlip(!flip)}}
     >
       <ReactCardFlip isFlipped={flip} flipDirection="horizontal">
@@ -59,7 +58,12 @@ function PokeCard(props) {
         </StyledFront>
 
         <StyledBack>
-          <h4>{name}</h4>
+          <h2>#{id} {name}</h2>
+          <h4>HP: {hp}</h4>
+          <h4>Type: {types.map(this_type => {return this_type+"  "})}</h4>
+          <h4>Weight: {weight}</h4>
+          <h4>Height: {height}</h4>
+          <button onClick={()=>{}}>Add Cart</button>
         </StyledBack>
       </ReactCardFlip>
     </StyledCard>

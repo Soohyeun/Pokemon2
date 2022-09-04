@@ -41,12 +41,26 @@ function MainPage(props) {
   return (
     <Wrapper>
       {pokeInfo.map((data, index) => {
+
+        let this_hp = data.stats.filter((obj1) => {
+          return obj1.stat.name == "hp"
+        }).map((obj2) => {
+          return obj2.base_stat
+        })
+        let this_types = data.types.map((obj3) => {
+          return obj3.type.name
+        })
+
         return (
           <PokeCard
             key={index}
+            id={data.id}
             name={data.name}
             image={data.sprites.other["official-artwork"].front_default}
-            type={data.types[0].type.name}
+            types={this_types}
+            hp={this_hp[0]}
+            weight={data.weight}
+            height={data.height}
           />
         );
       })}
