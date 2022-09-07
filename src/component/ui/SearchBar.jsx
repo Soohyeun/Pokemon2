@@ -4,10 +4,24 @@ import Dropdown from "react-bootstrap/Dropdown";
 import DropdownButton from "react-bootstrap/DropdownButton";
 import { ButtonGroup, InputGroup, Form, Button } from "react-bootstrap";
 
+const StyledSearchBar = styled.div`
+  width: 85%;
+  text-align: center;
+  display: flex;
+  justify-content: space-around;
+  padding-left: 15%
+`;
+
 function SearchBar(props) {
   return (
-    <>
-      <DropdownButton as={ButtonGroup} id="dropdown_type" variant="secondary" title="Type">
+    <StyledSearchBar>
+      <DropdownButton
+        as={ButtonGroup}
+        id="dropdown_type"
+        variant="secondary"
+        title="Type"
+        style={{margin: 15}}
+      >
         <Dropdown.Item href="#">grass</Dropdown.Item>
         <Dropdown.Item href="#">ground</Dropdown.Item>
         <Dropdown.Item href="#">bug</Dropdown.Item>
@@ -27,7 +41,13 @@ function SearchBar(props) {
         <Dropdown.Item href="#">steel</Dropdown.Item>
         <Dropdown.Item href="#">water</Dropdown.Item>
       </DropdownButton>
-      <DropdownButton as={ButtonGroup}  id="dropdown_colour" variant="secondary" title="Colour">
+      <DropdownButton
+        as={ButtonGroup}
+        id="dropdown_colour"
+        variant="secondary"
+        title="Colour"
+        style={{margin: 15}}
+      >
         <Dropdown.Item href="#">black</Dropdown.Item>
         <Dropdown.Item href="#">blue</Dropdown.Item>
         <Dropdown.Item href="#">brown</Dropdown.Item>
@@ -39,16 +59,11 @@ function SearchBar(props) {
         <Dropdown.Item href="#">white</Dropdown.Item>
         <Dropdown.Item href="#">yellow</Dropdown.Item>
       </DropdownButton>
-      <InputGroup>
-        <Form.Control
-          placeholder="Name or ID"
-          aria-label="Name or ID"
-        />
-        <Button variant="outline-secondary">Button</Button>
+      <InputGroup style={{margin: 15}}>
+        <Form.Control placeholder="Name or ID" aria-label="Name or ID" />
+        <Button variant="outline-secondary">Search</Button>
       </InputGroup>
-
-
-    </>
+    </StyledSearchBar>
   );
 }
 
