@@ -44,7 +44,6 @@ const typeColour = {
 function PokeCard(props) {
   const { id, name, image, types, hp, weight, height } = props;
   const [flip, setFlip] = useState(false);
-  console.log(typeof(types))
 
   return (
     <StyledCard

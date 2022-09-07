@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import axios from "axios";
 import PokeCard from "../ui/PokeCard";
+import SearchBar from "../ui/SearchBar";
 
 const Wrapper = styled.div`
   display: flex;
@@ -39,10 +40,13 @@ function MainPage(props) {
   console.log(pokeInfo);
 
   return (
+    <>
+    <SearchBar></SearchBar>
     <Wrapper>
       {pokeInfo.map((data, index) => {
 
         let this_hp = data.stats.filter((obj1) => {
+          // eslint-disable-next-line eqeqeq
           return obj1.stat.name == "hp"
         }).map((obj2) => {
           return obj2.base_stat
@@ -65,6 +69,8 @@ function MainPage(props) {
         );
       })}
     </Wrapper>
+    </>
+    
   );
 }
 export default MainPage;
