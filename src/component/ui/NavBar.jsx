@@ -18,7 +18,6 @@ function NavBar(props) {
       <NavBtn
         title="Home"
         onClick={() => {
-          console.log("home");
           navigate("/");
         }}
       />

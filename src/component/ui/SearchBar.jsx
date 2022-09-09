@@ -1,68 +1,98 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
-import Dropdown from "react-bootstrap/Dropdown";
-import DropdownButton from "react-bootstrap/DropdownButton";
-import { ButtonGroup, InputGroup, Form, Button } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
+import { Dropdown, DropdownButton, ButtonGroup, Button } from "react-bootstrap";
 
 const StyledSearchBar = styled.div`
-  width: 85%;
-  text-align: center;
   display: flex;
-  justify-content: space-around;
-  padding-left: 15%
+  align-items: center;
+  justify-content: center;
+`;
+
+const StyledInput = styled.div`
+  display: flex;
+  align-items: center;
 `;
 
 function SearchBar(props) {
+  const navigate = useNavigate();
+  const [name, setName] = useState("");
+
   return (
     <StyledSearchBar>
+      {/* Search by type */}
       <DropdownButton
         as={ButtonGroup}
         id="dropdown_type"
         variant="secondary"
         title="Type"
-        style={{margin: 15}}
+        style={{ margin: 15 }}
+        onSelect={(eventKey) => {
+          navigate(`/search/type/${eventKey}`);
+        }}
       >
-        <Dropdown.Item href="#">grass</Dropdown.Item>
-        <Dropdown.Item href="#">ground</Dropdown.Item>
-        <Dropdown.Item href="#">bug</Dropdown.Item>
-        <Dropdown.Item href="#">dark</Dropdown.Item>
-        <Dropdown.Item href="#">dragon</Dropdown.Item>
-        <Dropdown.Item href="#">electric</Dropdown.Item>
-        <Dropdown.Item href="#">fairy</Dropdown.Item>
-        <Dropdown.Item href="#">fighting</Dropdown.Item>
-        <Dropdown.Item href="#">fire</Dropdown.Item>
-        <Dropdown.Item href="#">flying</Dropdown.Item>
-        <Dropdown.Item href="#">ghost</Dropdown.Item>
-        <Dropdown.Item href="#">ice</Dropdown.Item>
-        <Dropdown.Item href="#">normal</Dropdown.Item>
-        <Dropdown.Item href="#">poison</Dropdown.Item>
-        <Dropdown.Item href="#">psychic</Dropdown.Item>
-        <Dropdown.Item href="#">rock</Dropdown.Item>
-        <Dropdown.Item href="#">steel</Dropdown.Item>
-        <Dropdown.Item href="#">water</Dropdown.Item>
+        <Dropdown.Item eventKey="grass">grass</Dropdown.Item>
+        <Dropdown.Item eventKey="ground">ground</Dropdown.Item>
+        <Dropdown.Item eventKey="bug">bug</Dropdown.Item>
+        <Dropdown.Item eventKey="dark">dark</Dropdown.Item>
+        <Dropdown.Item eventKey="dragon">dragon</Dropdown.Item>
+        <Dropdown.Item eventKey="electric">electric</Dropdown.Item>
+        <Dropdown.Item eventKey="fairy">fairy</Dropdown.Item>
+        <Dropdown.Item eventKey="fire">fire</Dropdown.Item>
+        <Dropdown.Item eventKey="flying">flying</Dropdown.Item>
+        <Dropdown.Item eventKey="ghost">ghost</Dropdown.Item>
+        <Dropdown.Item eventKey="ice">ice</Dropdown.Item>
+        <Dropdown.Item eventKey="normal">normal</Dropdown.Item>
+        <Dropdown.Item eventKey="poison">poison</Dropdown.Item>
+        <Dropdown.Item eventKey="psychic">psychic</Dropdown.Item>
+        <Dropdown.Item eventKey="rock">rock</Dropdown.Item>
+        <Dropdown.Item eventKey="steel">steel</Dropdown.Item>
+        <Dropdown.Item eventKey="water">water</Dropdown.Item>
       </DropdownButton>
+
+      {/* Search by colour */}
       <DropdownButton
         as={ButtonGroup}
         id="dropdown_colour"
         variant="secondary"
         title="Colour"
-        style={{margin: 15}}
+        style={{ margin: 15 }}
+        onSelect={(eventKey) => {
+          navigate(`/search/colour/${eventKey}`);
+        }}
       >
-        <Dropdown.Item href="#">black</Dropdown.Item>
-        <Dropdown.Item href="#">blue</Dropdown.Item>
-        <Dropdown.Item href="#">brown</Dropdown.Item>
-        <Dropdown.Item href="#">gray</Dropdown.Item>
-        <Dropdown.Item href="#">green</Dropdown.Item>
-        <Dropdown.Item href="#">pink</Dropdown.Item>
-        <Dropdown.Item href="#">purple</Dropdown.Item>
-        <Dropdown.Item href="#">red</Dropdown.Item>
-        <Dropdown.Item href="#">white</Dropdown.Item>
-        <Dropdown.Item href="#">yellow</Dropdown.Item>
+        <Dropdown.Item eventKey="black">black</Dropdown.Item>
+        <Dropdown.Item eventKey="blue">blue</Dropdown.Item>
+        <Dropdown.Item eventKey="brown">brown</Dropdown.Item>
+        <Dropdown.Item eventKey="gray">gray</Dropdown.Item>
+        <Dropdown.Item eventKey="green">green</Dropdown.Item>
+        <Dropdown.Item eventKey="pink">pink</Dropdown.Item>
+        <Dropdown.Item eventKey="purple">purple</Dropdown.Item>
+        <Dropdown.Item eventKey="red">red</Dropdown.Item>
+        <Dropdown.Item eventKey="white">white</Dropdown.Item>
+        <Dropdown.Item eventKey="yellow">yellow</Dropdown.Item>
       </DropdownButton>
-      <InputGroup style={{margin: 15}}>
-        <Form.Control placeholder="Name or ID" aria-label="Name or ID" />
-        <Button variant="outline-secondary">Search</Button>
-      </InputGroup>
+
+      {/* Search by name or id */}
+      <StyledInput>
+        <input
+          type="text"
+          placeholder="Enter name or id"
+          onChange={(event) => {
+            setName(event.target.value);
+          }}
+          style={{ height: 38 }}
+        />
+        <Button
+          onClick={() => {
+            navigate(`/search/name/${name}`);
+          }}
+          style={{ marginLeft: 10 }}
+          variant="secondary"
+        >
+          Search
+        </Button>
+      </StyledInput>
     </StyledSearchBar>
   );
 }

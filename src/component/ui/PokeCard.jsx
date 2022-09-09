@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import ReactCardFlip from "react-card-flip";
 import { useState } from "react";
+import { Button } from "react-bootstrap";
 
 const StyledCard = styled.div`
   border: #333 solid 1.5px;
@@ -57,12 +58,17 @@ function PokeCard(props) {
         </StyledFront>
 
         <StyledBack>
-          <h2>#{id} {name}</h2>
-          <h4>HP: {hp}</h4>
-          <h4>Type: {types.map(this_type => {return this_type+"  "})}</h4>
-          <h4>Weight: {weight}</h4>
-          <h4>Height: {height}</h4>
-          <button onClick={()=>{}}>Add Cart</button>
+          <h3>#{id} {name}</h3>
+          <h5>HP: {hp}</h5>
+          <h5>Type: {types.map(this_type => {return this_type+"  "})}</h5>
+          <h5>Weight: {weight}</h5>
+          <h5>Height: {height}</h5>
+          <Button
+          onClick={() => {console.log(id)}}
+          variant="secondary"
+        >
+          Add Cart
+        </Button>
         </StyledBack>
       </ReactCardFlip>
     </StyledCard>
