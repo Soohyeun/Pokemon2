@@ -4,6 +4,7 @@ import styled from "styled-components";
 import "./App.css";
 import NavBar from "./component/ui/NavBar";
 import MainPage from "./component/page/MainPage";
+import SearchPage from "./component/page/SearchPage"
 
 const MainTitleText = styled.p`
   font-size: 24px;
@@ -23,6 +24,7 @@ function App() {
       <NavBar />
       <Routes>
         <Route index element={<MainPage />} />
+        <Route path = "search/:searchType/:thisPoke" element={<SearchPage/>}/>
       </Routes>
       <FooterText>© 2022 Pokemon Soo by React.js</FooterText>
     </BrowserRouter>
